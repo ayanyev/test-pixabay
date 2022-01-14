@@ -1,0 +1,5 @@
+rootProject.name = "Pixabay test"
+include ':app'
+include ':feature-repositories'
+include ':platform'
+include ':common'
