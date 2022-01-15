@@ -1,8 +1,6 @@
 package com.ezzyapps.test.repositories.ui.details
 
 import com.eazzyapps.test.ACCOUNT_OWNER
-import com.ezzyapps.test.repositories.domain.models.CommitInfo
-import com.ezzyapps.test.repositories.domain.models.GitHubRepo
 
 val fakeRepoId = 1111
 
