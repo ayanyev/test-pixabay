@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "queries")
 data class QueryDbo(
 
-    @PrimaryKey(autoGenerate = true)
-    val queryId: Long = 0,
+    @PrimaryKey
     val query: String
 
 )

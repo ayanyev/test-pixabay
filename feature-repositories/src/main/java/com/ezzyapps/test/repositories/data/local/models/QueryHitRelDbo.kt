@@ -5,10 +5,10 @@ import androidx.room.Entity
 @Entity(
     tableName = "hit_query_ref",
     primaryKeys = [
-        "queryId", "hitId"
+        "query", "hitId"
     ]
 )
 data class QueryHitRelDbo(
-    val hitId: Long,
-    val queryId: Long
+    val query: String,
+    val hitId: Long
 )

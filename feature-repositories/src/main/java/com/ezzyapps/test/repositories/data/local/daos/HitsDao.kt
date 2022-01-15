@@ -23,7 +23,7 @@ interface HitsDao {
     fun insertQueryHitRel(rels: List<QueryHitRelDbo>)
 
     @Transaction
-    @Query("SELECT * FROM queries WHERE queryId=:query")
+    @Query("SELECT * FROM queries WHERE `query`=:query")
     fun getHitsForQuery(query: String): Observable<List<QueryHits>>
 
     @Query("SELECT * FROM hits WHERE hitId=:id")

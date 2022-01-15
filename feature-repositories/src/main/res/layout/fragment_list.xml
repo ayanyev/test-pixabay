@@ -14,11 +14,15 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="1dp">
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:items="@{viewModel.images}"
+            app:layout="@{@layout/item_thumb}" />
 
         <androidx.core.widget.ContentLoadingProgressBar
             style="@style/Widget.AppCompat.ProgressBar"

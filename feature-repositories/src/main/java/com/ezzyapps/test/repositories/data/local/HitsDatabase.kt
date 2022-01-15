@@ -8,7 +8,7 @@ import com.ezzyapps.test.repositories.data.local.models.QueryDbo
 import com.ezzyapps.test.repositories.data.local.models.QueryHitRelDbo
 
 @Database(
-    version = 1,
+    version = 2,
     entities = [
         HitDbo::class,
         QueryDbo::class,

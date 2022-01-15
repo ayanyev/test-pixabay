@@ -21,7 +21,7 @@ class ThumbsListViewModel @Inject constructor(repo: PhotoRepository) : ViewModel
 
     val itemClicks: Observable<Int> = _itemClicks
 
-//    val publicRepos = ObservableField<List<RepoItemViewModel>>()
+    val images = ObservableField<List<ThumbItemViewModel>>()
 
     val isLoading = ObservableBoolean(false)
 
@@ -37,8 +37,9 @@ class ThumbsListViewModel @Inject constructor(repo: PhotoRepository) : ViewModel
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext { hideError(); isLoading.set(false) }
                 .doOnError { isLoading.set(false) }
+                .map { list -> list.map { ThumbItemViewModel(it) } }
                 .subscribeBy(
-                    onNext = { repos -> },
+                    onNext = { repos -> images.set(repos) },
                     onError = { e -> showError(e.message ?: "Smth happened!!!") }
                 )
         )

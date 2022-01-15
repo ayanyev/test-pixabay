@@ -10,6 +10,7 @@ dependencies {
         api "androidx.fragment:fragment-ktx:1.4.0"
         api "androidx.navigation:navigation-fragment-ktx:2.3.5"
         api "androidx.navigation:navigation-ui-ktx:2.3.5"
+        api "androidx.recyclerview:recyclerview:1.2.1"
 
         api "androidx.room:room-runtime:2.4.1"
         api "androidx.room:room-rxjava3:2.4.1"
@@ -31,7 +32,9 @@ dependencies {
         api "com.squareup.moshi:moshi-kotlin:1.12.0"
 
         api "com.squareup.picasso:picasso:2.71828"
-        
+
+        api 'com.google.android.flexbox:flexbox:3.0.0'
+
         api "junit:junit:4.13.2"
         api "androidx.test:core:1.4.0"
         api "io.mockk:mockk:1.12.0"

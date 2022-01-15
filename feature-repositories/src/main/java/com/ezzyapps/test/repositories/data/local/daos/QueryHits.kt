@@ -11,7 +11,7 @@ data class QueryHits(
     @Embedded
     val query: QueryDbo,
     @Relation(
-        parentColumn = "queryId",
+        parentColumn = "query",
         entityColumn = "hitId",
         associateBy = Junction(QueryHitRelDbo::class)
     )

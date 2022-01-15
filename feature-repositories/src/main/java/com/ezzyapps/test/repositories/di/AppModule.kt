@@ -30,6 +30,7 @@ abstract class AppModule {
         @Singleton
         fun provideLocalDatabase(@ApplicationContext context: Context): HitsDatabase =
             Room.databaseBuilder(context, HitsDatabase::class.java, "photoDB")
+                .fallbackToDestructiveMigration()
                 .build()
                 .apply { Thread { clearAllTables() }.start() } // clear db at startup
     }

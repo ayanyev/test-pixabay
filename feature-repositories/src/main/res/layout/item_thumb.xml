@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ezzyapps.test.repositories.ui.ThumbItemViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/thumbImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:errorRes="@{viewModel.error}"
+            app:imageRes="@{viewModel.placeholder}"
+            app:imageUrl="@{viewModel.url}"
+            app:layout_constraintBottom_toTopOf="@id/thumbTags"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:size="@{viewModel.size}"
+            tools:src="@drawable/test_item_image" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#B3939090"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/thumbImage"
+            app:layout_constraintStart_toStartOf="@+id/thumbImage"
+            app:layout_constraintTop_toTopOf="@id/thumbUserName" />
+
+        <TextView
+            android:id="@+id/thumbUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="4dp"
+            android:text="@{viewModel.name}"
+            android:textColor="#FFEC00"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@id/thumbTags"
+            app:layout_constraintEnd_toEndOf="@+id/thumbImage"
+            app:layout_constraintStart_toStartOf="@+id/thumbImage"
+            tools:text="by Mad Monkey" />
+
+        <TextView
+            android:id="@+id/thumbTags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:padding="4dp"
+            android:text="@{viewModel.tags}"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/thumbImage"
+            app:layout_constraintStart_toStartOf="@+id/thumbImage"
+            tools:text="fruits vegetables cakes gardening nature animals drinking warming" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

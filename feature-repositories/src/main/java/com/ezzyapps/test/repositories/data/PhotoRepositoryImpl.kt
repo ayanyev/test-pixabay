@@ -48,9 +48,9 @@ class PhotoRepositoryImpl @Inject constructor(
                 val hits = response.body()!!.hits
                 db.runInTransaction {
                     with(db.hitsDao()) {
-                        val qId = insertQuery(QueryDbo(query = query))
+                        insertQuery(QueryDbo(query = query))
                         val hIds = insertHits(hits.toLocal())
-                        val rels = hIds.map { hId -> QueryHitRelDbo(qId, hId) }
+                        val rels = hIds.map { hId -> QueryHitRelDbo(hitId = hId, query = query) }
                         insertQueryHitRel(rels)
                     }
                 }

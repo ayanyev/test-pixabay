@@ -36,4 +36,13 @@ android {
 
 dependencies {
 
+    implementation platform(project(':platform'))
+    kapt platform(project(':platform'))
+
+    implementation "androidx.recyclerview:recyclerview"
+
+    api 'com.google.android.flexbox:flexbox'
+
+    implementation "com.squareup.picasso:picasso"
+
 }

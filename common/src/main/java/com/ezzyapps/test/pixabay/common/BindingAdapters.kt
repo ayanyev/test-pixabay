@@ -1,37 +1,61 @@
 package com.ezzyapps.test.pixabay.common
 
-import android.view.LayoutInflater
+import android.util.Size
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import androidx.annotation.IdRes
+import android.widget.ImageView
+import androidx.annotation.DrawableRes
+import androidx.annotation.LayoutRes
 import androidx.databinding.BindingAdapter
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.ezzyapps.test.pixabay.common.flexrecyclerview.DataBindingAdapter
+import com.google.android.flexbox.*
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+
+@BindingAdapter("items", "layout")
+fun RecyclerView.setItems(items: List<Any>?, @LayoutRes layout: Int) {
+    if (items == null) return
+    layoutManager = FlexboxLayoutManager(context).apply {
+        flexWrap = FlexWrap.WRAP
+        flexDirection = FlexDirection.COLUMN
+        alignItems = AlignItems.FLEX_START
+        justifyContent = JustifyContent.FLEX_START
+    }
+    adapter = DataBindingAdapter(items, layout)
+}
 
 @BindingAdapter("visible")
 fun View.setVisible(isVisible: Boolean) {
     visibility = if (isVisible) View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("items", "layout")
-fun <T> ListView.createList(
-    entries: List<T>?,
-    @IdRes layoutId: Int
+@BindingAdapter("imageUrl", "imageRes", "errorRes", "size", requireAll = false)
+fun ImageView.setImageFromUrlOrResource(
+    url: String?,
+    @DrawableRes imageRes: Int? = null,
+    @DrawableRes errorRes: Int? = null,
+    size: Size? = null
 ) {
-    entries?.let {
-        adapter = object : ArrayAdapter<T>(context, layoutId, entries) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                return (convertView?.tag as? ViewDataBinding
-                    ?: DataBindingUtil.inflate(
-                        LayoutInflater.from(context), layoutId, null, true
-                    )
-                        ).apply {
-                        setVariable(BR.viewModel, entries[position])
-                        root.tag = this
-                    }.root
+    val requestedScaleType = scaleType
+    scaleType = ImageView.ScaleType.CENTER
+    when {
+        url == null && imageRes == null -> return
+        url == null && imageRes != null -> setImageResource(imageRes)
+        else -> Picasso.get()
+            .load(if (url.isNullOrBlank()) null else url)
+            .apply {
+                if (errorRes != null) error(errorRes)
+                if (imageRes != null) placeholder(imageRes)
+                if (size == null) centerCrop() else resize(size.width, size.height)
             }
-        }
+            .into(this, object : Callback {
+                override fun onSuccess() {
+                    scaleType = requestedScaleType
+                }
+                override fun onError(e: Exception?) {
+                    // TODO("Not yet implemented")
+                }
+
+            })
     }
 }
