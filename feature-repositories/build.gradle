@@ -46,6 +46,8 @@ dependencies {
     implementation platform(project(':platform'))
     kapt platform(project(':platform'))
 
+    implementation(project(':common'))
+
     implementation "com.google.android.material:material"
     implementation "androidx.fragment:fragment-ktx"
 
