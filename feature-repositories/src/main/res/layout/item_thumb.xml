@@ -7,19 +7,21 @@
 
         <variable
             name="viewModel"
-            type="com.ezzyapps.test.repositories.ui.ThumbItemViewModel" />
+            type="com.ezzyapps.test.repositories.ui.imageslist.ThumbItemViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.doOnClick.invoke()}"
         android:padding="2dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/thumbImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
             app:errorRes="@{viewModel.error}"
             app:imageRes="@{viewModel.placeholder}"
             app:imageUrl="@{viewModel.url}"

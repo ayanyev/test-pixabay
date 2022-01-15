@@ -39,7 +39,13 @@ dependencies {
     implementation platform(project(':platform'))
     kapt platform(project(':platform'))
 
+    implementation "com.google.android.material:material"
+
     implementation "androidx.recyclerview:recyclerview"
+
+    api "io.reactivex.rxjava3:rxandroid"
+    api "io.reactivex.rxjava3:rxjava"
+    api "io.reactivex.rxjava3:rxkotlin"
 
     api 'com.google.android.flexbox:flexbox'
 

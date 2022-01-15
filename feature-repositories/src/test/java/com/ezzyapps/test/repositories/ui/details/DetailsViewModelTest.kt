@@ -1,7 +1,7 @@
 package com.ezzyapps.test.repositories.ui.details
 
 import com.ezzyapps.test.repositories.ImmediateSchedulersRule
-import com.ezzyapps.test.repositories.domain.PhotoRepository
+import com.ezzyapps.test.repositories.domain.ImageRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
@@ -16,7 +16,7 @@ class DetailsViewModelTest {
     @get:Rule
     val rxTestRule = ImmediateSchedulersRule()
 
-    private val repository = mockk<PhotoRepository>()
+    private val repository = mockk<ImageRepository>()
 
     @Test
     fun successTest() {

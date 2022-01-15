@@ -46,6 +46,7 @@ dependencies {
     implementation platform(project(':platform'))
     kapt platform(project(':platform'))
 
+    implementation project(path: ':common')
     implementation project(path: ':feature-repositories')
 
     implementation "com.google.android.material:material"

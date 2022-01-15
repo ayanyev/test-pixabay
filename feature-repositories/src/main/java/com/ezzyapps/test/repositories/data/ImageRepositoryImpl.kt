@@ -7,7 +7,7 @@ import com.ezzyapps.test.repositories.data.mappers.toFullImage
 import com.ezzyapps.test.repositories.data.mappers.toLocal
 import com.ezzyapps.test.repositories.data.mappers.toPreview
 import com.ezzyapps.test.repositories.data.remote.HitsClient
-import com.ezzyapps.test.repositories.domain.PhotoRepository
+import com.ezzyapps.test.repositories.domain.ImageRepository
 import com.ezzyapps.test.repositories.domain.models.FullImage
 import com.ezzyapps.test.repositories.domain.models.PreviewImage
 import io.reactivex.rxjava3.core.Maybe
@@ -15,12 +15,12 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class PhotoRepositoryImpl @Inject constructor(
+class ImageRepositoryImpl @Inject constructor(
 
     private val db: HitsDatabase,
     private val client: HitsClient
 
-) : PhotoRepository {
+) : ImageRepository {
 
     override fun getPreviews(query: String): Observable<List<PreviewImage>> {
         return db.hitsDao().getHitsForQuery(query)

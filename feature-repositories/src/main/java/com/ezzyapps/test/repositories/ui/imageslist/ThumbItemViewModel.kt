@@ -1,4 +1,4 @@
-package com.ezzyapps.test.repositories.ui
+package com.ezzyapps.test.repositories.ui.imageslist
 
 import android.util.Size
 import com.ezzyapps.test.repositories.R
@@ -6,7 +6,8 @@ import com.ezzyapps.test.repositories.domain.models.PreviewImage
 
 class ThumbItemViewModel(
 
-    image: PreviewImage
+    image: PreviewImage,
+    onClick: (Long) -> Unit
 
 ) {
 
@@ -21,5 +22,9 @@ class ThumbItemViewModel(
     val name = "by ${image.userName}"
 
     val tags = image.tags.joinToString(" ")
+
+    val doOnClick: () -> Unit = {
+        onClick(image.id)
+    }
 
 }

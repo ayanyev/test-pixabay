@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
-interface PhotoRepository {
+interface ImageRepository {
 
     fun getPreviews(query: String) : Observable<List<PreviewImage>>
 

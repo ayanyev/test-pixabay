@@ -2,11 +2,11 @@ package com.ezzyapps.test.repositories.di
 
 import android.content.Context
 import androidx.room.Room
-import com.ezzyapps.test.repositories.data.PhotoRepositoryImpl
+import com.ezzyapps.test.repositories.data.ImageRepositoryImpl
 import com.ezzyapps.test.repositories.data.local.HitsDatabase
 import com.ezzyapps.test.repositories.data.remote.HitsClient
 import com.ezzyapps.test.repositories.data.remote.RemoteClient
-import com.ezzyapps.test.repositories.domain.PhotoRepository
+import com.ezzyapps.test.repositories.domain.ImageRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -17,7 +17,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class AppModule {
+abstract class ImagesModule {
 
     companion object {
 
@@ -37,7 +37,7 @@ abstract class AppModule {
 
     @Binds
     abstract fun bindRepository(
-        repository: PhotoRepositoryImpl
-    ): PhotoRepository
+        repository: ImageRepositoryImpl
+    ): ImageRepository
 
 }

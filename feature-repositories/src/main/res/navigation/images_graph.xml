@@ -6,6 +6,15 @@
 
     <fragment
         android:id="@+id/thumbsListFragment"
-        android:name="com.ezzyapps.test.repositories.ui.ThumbsListFragment"
-        android:label="ThumbsListFragment" />
+        android:name="com.ezzyapps.test.repositories.ui.imageslist.ThumbsListFragment"
+        android:label="ThumbsListFragment" >
+    </fragment>
+    <dialog
+        android:id="@+id/imageSelectionDialog"
+        android:name="com.ezzyapps.test.repositories.ui.imageslist.YesNoDialogFragment">
+    </dialog>
+    <fragment
+        android:id="@+id/imageDetailsFragment"
+        android:name="com.ezzyapps.test.repositories.ui.imagedetails.ImageDetailsFragment"
+        android:label="ImageDetailsFragment" />
 </navigation>
