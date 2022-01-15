@@ -53,4 +53,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android"
     kapt "com.google.dagger:hilt-compiler"
 
+    implementation "androidx.navigation:navigation-fragment-ktx"
+    implementation "androidx.navigation:navigation-ui-ktx"
+
 }
