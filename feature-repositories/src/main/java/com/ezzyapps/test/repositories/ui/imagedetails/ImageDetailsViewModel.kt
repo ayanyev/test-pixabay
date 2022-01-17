@@ -1,11 +1,13 @@
 package com.ezzyapps.test.repositories.ui.imagedetails
 
+import androidx.annotation.VisibleForTesting
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.pixabay.common.BaseViewModel
 import com.ezzyapps.test.repositories.domain.ImageRepository
+import com.ezzyapps.test.repositories.domain.models.FullImage
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -15,7 +17,7 @@ class ImageDetailsViewModel @AssistedInject constructor(
 
     @Assisted val hitId: Long,
     override val delegate: ActivityDelegate,
-    repo: ImageRepository
+    private val repo: ImageRepository
 
 ) : BaseViewModel() {
 
@@ -23,6 +25,17 @@ class ImageDetailsViewModel @AssistedInject constructor(
 
     init {
 
+        fetchDetails(hitId)
+
+    }
+
+    @VisibleForTesting
+    fun showDetails(i: FullImage) {
+        image.set(FullImageViewModel(i))
+    }
+
+    @VisibleForTesting
+    fun fetchDetails(hitId: Long) {
         disposables.add(
             repo.getPhotoDetails(hitId)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -34,7 +47,7 @@ class ImageDetailsViewModel @AssistedInject constructor(
                 }
                 .subscribeBy(
                     onSuccess = { i ->
-                        image.set(FullImageViewModel(i))
+                        showDetails(i)
                     },
                     onComplete = {
                         delegate.showMessage("Error: image no found")
@@ -44,7 +57,6 @@ class ImageDetailsViewModel @AssistedInject constructor(
                     }
                 )
         )
-
     }
 
     @dagger.assisted.AssistedFactory

@@ -4,25 +4,9 @@ import android.util.Size
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
-import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
-import com.ezzyapps.test.pixabay.common.flexrecyclerview.DataBindingAdapter
-import com.google.android.flexbox.*
 import com.squareup.picasso.Picasso
-
-@BindingAdapter("items", "layout")
-fun RecyclerView.setItems(items: List<Any>?, @LayoutRes layout: Int) {
-    if (items == null) return
-    layoutManager = FlexboxLayoutManager(context).apply {
-        flexWrap = FlexWrap.WRAP
-        flexDirection = FlexDirection.COLUMN
-        alignItems = AlignItems.FLEX_START
-        justifyContent = JustifyContent.FLEX_START
-    }
-    adapter = DataBindingAdapter(items, layout)
-}
 
 @BindingAdapter("query", "onSearch")
 fun SearchView.initialise(query: String, doOnSearch: (String) -> Unit) {

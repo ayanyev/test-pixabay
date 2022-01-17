@@ -1,4 +1,4 @@
-package com.ezzyapps.test.repositories
+package com.ezzyapps.test.pixabay.common.test
 
 import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
 import io.reactivex.rxjava3.plugins.RxJavaPlugins

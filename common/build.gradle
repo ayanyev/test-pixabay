@@ -51,4 +51,6 @@ dependencies {
 
     implementation "com.squareup.picasso:picasso"
 
+    implementation "junit:junit"
+
 }
