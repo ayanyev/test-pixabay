@@ -4,34 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.ezzyapps.test.pixabay.common.BaseFragment
 import com.ezzyapps.test.repositories.R
-import com.ezzyapps.test.repositories.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ImageDetailsFragment : Fragment() {
+class ImageDetailsFragment : BaseFragment<ImageDetailsViewModel>() {
 
-    private val args: ImageDetailsFragmentArgs by navArgs()
+    override val layoutRes = R.layout.fragment_details
+    override val viewModel by viewModels<ImageDetailsViewModel>()
 
-    private val vm: ImageDetailsViewModel by viewModels()
+    private val args by navArgs<ImageDetailsFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        (requireActivity() as? AppCompatActivity)?.apply {
-            supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        }
-        return DataBindingUtil.inflate<FragmentDetailsBinding>(inflater, R.layout.fragment_details, container, false)
-            .apply {
-                viewModel = vm
-                vm.setId(args.imageId)
-            }.root
+        val root = super.onCreateView(inflater, container, savedInstanceState)
+        viewModel.setId(args.imageId)
+        return root
     }
 
 }

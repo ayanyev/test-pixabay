@@ -39,8 +39,8 @@ dependencies {
     implementation platform(project(':platform'))
     kapt platform(project(':platform'))
 
+    implementation "androidx.fragment:fragment-ktx"
     implementation "com.google.android.material:material"
-
     implementation "androidx.recyclerview:recyclerview"
 
     api "io.reactivex.rxjava3:rxandroid"
