@@ -23,12 +23,12 @@ class ImageDetailsViewModelTest {
     @Test
     fun successTest() {
 
-        every { repository.getPhotoDetails(fakeHitId) } returns Maybe.just(fakeFullDetails)
+        every { repository.getDetails(fakeHitId) } returns Maybe.just(fakeFullDetails)
 
         val viewModel = spyk(ImageDetailsViewModel(fakeHitId, delegate, repository))
 
         verifyOrder {
-            repository.getPhotoDetails(fakeHitId)
+            repository.getDetails(fakeHitId)
             delegate.showLoading(true)
             delegate.showLoading(false)
         }
@@ -42,12 +42,12 @@ class ImageDetailsViewModelTest {
 
         val msgSlot = slot<String>()
 
-        every { repository.getPhotoDetails(fakeHitId) } returns Maybe.empty()
+        every { repository.getDetails(fakeHitId) } returns Maybe.empty()
 
         val viewModel = spyk(ImageDetailsViewModel(fakeHitId, delegate, repository))
 
         verifyOrder {
-            repository.getPhotoDetails(fakeHitId)
+            repository.getDetails(fakeHitId)
             delegate.showLoading(true)
             delegate.showLoading(false)
             delegate.showMessage(capture(msgSlot))

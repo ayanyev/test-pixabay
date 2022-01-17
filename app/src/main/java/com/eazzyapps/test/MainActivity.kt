@@ -17,7 +17,7 @@ import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.pixabay.common.setVisible
 import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents
 import com.ezzyapps.test.repositories.ui.imageslist.ConfirmationDialogDirections
-import com.ezzyapps.test.repositories.ui.imageslist.ThumbsListFragmentDirections
+import com.ezzyapps.test.repositories.ui.imageslist.PreviewListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 with(navController) {
                     when (event) {
                         is ImageModuleNavEvents.ImageSelectedEvent ->
-                            navigate(ThumbsListFragmentDirections.toDetailsConfirmationDialog(event.id))
+                            navigate(PreviewListFragmentDirections.toDetailsConfirmationDialog(event.id))
                         is ImageModuleNavEvents.ImageSelectionConfirmedEvent ->
                             navigate(ConfirmationDialogDirections.toImageDetailsFragment(event.id))
                     }

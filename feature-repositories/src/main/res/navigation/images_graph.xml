@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/thumbsListFragment"
-        android:name="com.ezzyapps.test.repositories.ui.imageslist.ThumbsListFragment"
+        android:name="com.ezzyapps.test.repositories.ui.imageslist.PreviewListFragment"
         android:label="Pixabay search &amp; pick" >
         <action
             android:id="@+id/toDetailsConfirmationDialog"

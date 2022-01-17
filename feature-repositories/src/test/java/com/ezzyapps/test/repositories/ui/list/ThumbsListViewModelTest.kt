@@ -3,7 +3,7 @@ package com.ezzyapps.test.repositories.ui.list
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.pixabay.common.test.ImmediateSchedulersRule
 import com.ezzyapps.test.repositories.domain.ImageRepository
-import com.ezzyapps.test.repositories.ui.imageslist.ThumbsListViewModel
+import com.ezzyapps.test.repositories.ui.imageslist.PreviewListViewModel
 import io.mockk.*
 import io.reactivex.rxjava3.core.Observable.error
 import io.reactivex.rxjava3.core.Observable.just
@@ -29,7 +29,7 @@ class ThumbsListViewModelTest {
 
         every { repository.getPreviews(query) } returns just(fakePreviews)
 
-        val viewModel = spyk(ThumbsListViewModel(delegate, repository))
+        val viewModel = spyk(PreviewListViewModel(delegate, repository))
 
         viewModel.doSearch(query)
 
@@ -59,7 +59,7 @@ class ThumbsListViewModelTest {
 
         every { repository.getPreviews(query) } returns error(e)
 
-        val viewModel = spyk(ThumbsListViewModel(delegate, repository))
+        val viewModel = spyk(PreviewListViewModel(delegate, repository))
 
         viewModel.doSearch(query)
 

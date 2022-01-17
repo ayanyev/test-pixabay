@@ -1,11 +1,11 @@
 package com.ezzyapps.test.repositories.ui.list
 
-import com.ezzyapps.test.repositories.domain.models.FullImage
-import com.ezzyapps.test.repositories.domain.models.PreviewImage
+import com.ezzyapps.test.repositories.domain.models.ImageDetails
+import com.ezzyapps.test.repositories.domain.models.ImagePreview
 
 const val fakeHitId: Long = 1111
 
-val fakePreview = PreviewImage(
+val fakePreview = ImagePreview(
     id = fakeHitId,
     userName = "Mad Rabbit",
     url = "https://cdn.pixabay.com/photo/2021/09/23/05/30/strawberry-6648685_150.jpg",
@@ -14,7 +14,7 @@ val fakePreview = PreviewImage(
     tags = listOf("strawberry", "fruit", "food")
 )
 
-val fakeFullDetails = FullImage(
+val fakeFullDetails = ImageDetails(
     id = fakeHitId,
     userName = "Mad Rabbit",
     url = "https://cdn.pixabay.com/photo/2021/09/23/05/30/strawberry-6648685_150.jpg",

@@ -5,7 +5,7 @@ import androidx.databinding.ObservableField
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.pixabay.common.BaseViewModel
 import com.ezzyapps.test.repositories.domain.ImageRepository
-import com.ezzyapps.test.repositories.domain.models.PreviewImage
+import com.ezzyapps.test.repositories.domain.models.ImagePreview
 import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents.ImageSelectedEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 import javax.inject.Inject
 
 @HiltViewModel
-class ThumbsListViewModel @Inject constructor(
+class PreviewListViewModel @Inject constructor(
 
     override val delegate: ActivityDelegate,
     private val repo: ImageRepository
@@ -22,7 +22,7 @@ class ThumbsListViewModel @Inject constructor(
 
     private val defaultQuery = "fruits"
 
-    val images = ObservableField<List<ThumbItemViewModel>>()
+    val images = ObservableField<List<PreviewItemViewModel>>()
 
     var query = defaultQuery
 
@@ -57,9 +57,9 @@ class ThumbsListViewModel @Inject constructor(
     }
 
     @VisibleForTesting
-    fun showPreviews(list: List<PreviewImage>) {
+    fun showPreviews(list: List<ImagePreview>) {
         val vms = list.map {
-            ThumbItemViewModel(it) { id -> showDetails(id) }
+            PreviewItemViewModel(it) { id -> showDetails(id) }
         }
         images.set(vms)
     }

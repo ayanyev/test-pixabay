@@ -2,10 +2,10 @@ package com.ezzyapps.test.repositories.ui.imagedetails
 
 import android.util.Size
 import com.ezzyapps.test.repositories.R
-import com.ezzyapps.test.repositories.domain.models.FullImage
+import com.ezzyapps.test.repositories.domain.models.ImageDetails
 
 class FullImageViewModel(
-    image: FullImage
+    image: ImageDetails
 ) {
 
     val url = image.url

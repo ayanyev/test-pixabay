@@ -1,6 +1,6 @@
 package com.ezzyapps.test.repositories.domain.models
 
-data class PreviewImage(
+data class ImagePreview(
 
     val id: Long,
     val userName: String,

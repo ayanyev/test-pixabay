@@ -1,6 +1,6 @@
 package com.ezzyapps.test.repositories.domain.models
 
-data class FullImage(
+data class ImageDetails(
 
     val id: Long,
     val userName: String,

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.ezzyapps.test.repositories.ui.imageslist.ThumbsListViewModel" />
+            type="com.ezzyapps.test.repositories.ui.imageslist.PreviewListViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="1dp">
+        >
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
@@ -28,9 +28,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             app:items="@{viewModel.images}"
-            app:layout="@{@layout/item_thumb}" />
+            app:layout="@{@layout/item_preview}"
+            android:padding="4dp"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

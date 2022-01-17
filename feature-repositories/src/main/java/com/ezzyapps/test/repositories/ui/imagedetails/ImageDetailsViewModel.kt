@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.pixabay.common.BaseViewModel
 import com.ezzyapps.test.repositories.domain.ImageRepository
-import com.ezzyapps.test.repositories.domain.models.FullImage
+import com.ezzyapps.test.repositories.domain.models.ImageDetails
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -30,14 +30,14 @@ class ImageDetailsViewModel @AssistedInject constructor(
     }
 
     @VisibleForTesting
-    fun showDetails(i: FullImage) {
+    fun showDetails(i: ImageDetails) {
         image.set(FullImageViewModel(i))
     }
 
     @VisibleForTesting
     fun fetchDetails(hitId: Long) {
         disposables.add(
-            repo.getPhotoDetails(hitId)
+            repo.getDetails(hitId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     delegate.showLoading(true)

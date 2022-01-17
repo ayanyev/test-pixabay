@@ -2,8 +2,8 @@ package com.ezzyapps.test.repositories.data.mappers
 
 import com.ezzyapps.test.repositories.data.local.models.HitDbo
 import com.ezzyapps.test.repositories.data.remote.models.HitDto
-import com.ezzyapps.test.repositories.domain.models.FullImage
-import com.ezzyapps.test.repositories.domain.models.PreviewImage
+import com.ezzyapps.test.repositories.domain.models.ImageDetails
+import com.ezzyapps.test.repositories.domain.models.ImagePreview
 
 fun HitDto.toLocal() = HitDbo(
     hitId = id,
@@ -22,7 +22,7 @@ fun HitDto.toLocal() = HitDbo(
 
 fun List<HitDto>.toLocal() = map { it.toLocal() }
 
-fun HitDbo.toPreviewImage() = PreviewImage(
+fun HitDbo.toPreviewImage() = ImagePreview(
     id = hitId,
     userName = userName,
     url = urlThumb,
@@ -33,7 +33,7 @@ fun HitDbo.toPreviewImage() = PreviewImage(
 
 fun List<HitDbo>.toPreview() = map { it.toPreviewImage() }
 
-fun HitDbo.toFullImage() = FullImage(
+fun HitDbo.toFullImage() = ImageDetails(
     id = hitId,
     userName = userName,
     url = urlThumb,

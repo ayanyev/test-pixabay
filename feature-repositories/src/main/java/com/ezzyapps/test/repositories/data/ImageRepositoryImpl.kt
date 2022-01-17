@@ -8,8 +8,8 @@ import com.ezzyapps.test.repositories.data.mappers.toLocal
 import com.ezzyapps.test.repositories.data.mappers.toPreview
 import com.ezzyapps.test.repositories.data.remote.HitsClient
 import com.ezzyapps.test.repositories.domain.ImageRepository
-import com.ezzyapps.test.repositories.domain.models.FullImage
-import com.ezzyapps.test.repositories.domain.models.PreviewImage
+import com.ezzyapps.test.repositories.domain.models.ImageDetails
+import com.ezzyapps.test.repositories.domain.models.ImagePreview
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -22,7 +22,7 @@ class ImageRepositoryImpl @Inject constructor(
 
 ) : ImageRepository {
 
-    override fun getPreviews(query: String): Observable<List<PreviewImage>> {
+    override fun getPreviews(query: String): Observable<List<ImagePreview>> {
         return db.hitsDao().getHitsForQuery(query)
             .subscribeOn(Schedulers.io())
             .doOnNext { list ->
@@ -32,7 +32,7 @@ class ImageRepositoryImpl @Inject constructor(
             .map { it.first().hits.toPreview() }
     }
 
-    override fun getPhotoDetails(id: Long): Maybe<FullImage> {
+    override fun getDetails(id: Long): Maybe<ImageDetails> {
         return db.hitsDao().getHitForId(id)
             .subscribeOn(Schedulers.io())
             .map { it.toFullImage() }
@@ -56,8 +56,8 @@ class ImageRepositoryImpl @Inject constructor(
                         insertQueryHitRel(rels)
                     }
                 }
-            } else throw Exception("Received no repositories")
-        } else throw Exception("Error while fetching repositories (code: ${response.code()})")
+            } else throw Exception("Received no previews")
+        } else throw Exception("Error while fetching previews (code: ${response.code()})")
     }
 
 }

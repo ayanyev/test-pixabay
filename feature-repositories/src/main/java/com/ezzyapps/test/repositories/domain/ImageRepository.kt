@@ -1,15 +1,14 @@
 package com.ezzyapps.test.repositories.domain
 
-import com.ezzyapps.test.repositories.domain.models.FullImage
-import com.ezzyapps.test.repositories.domain.models.PreviewImage
+import com.ezzyapps.test.repositories.domain.models.ImageDetails
+import com.ezzyapps.test.repositories.domain.models.ImagePreview
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
 
 interface ImageRepository {
 
-    fun getPreviews(query: String) : Observable<List<PreviewImage>>
+    fun getPreviews(query: String) : Observable<List<ImagePreview>>
 
-    fun getPhotoDetails(id: Long) : Maybe<FullImage>
+    fun getDetails(id: Long) : Maybe<ImageDetails>
 
 }
