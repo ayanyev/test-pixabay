@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/thumbsListFragment"
         android:name="com.ezzyapps.test.repositories.ui.imageslist.ThumbsListFragment"
-        android:label="ThumbsListFragment" >
+        android:label="Pixabay search &amp; pick" >
         <action
             android:id="@+id/toDetailsConfirmationDialog"
             app:destination="@id/imageSelectionDialog" />
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/imageDetailsFragment"
         android:name="com.ezzyapps.test.repositories.ui.imagedetails.ImageDetailsFragment"
-        android:label="ImageDetailsFragment" >
+        android:label="Image details" >
         <argument
             android:name="imageId"
             app:argType="long" />

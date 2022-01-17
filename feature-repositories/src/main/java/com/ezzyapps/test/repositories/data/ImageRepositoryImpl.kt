@@ -41,7 +41,7 @@ class ImageRepositoryImpl @Inject constructor(
     private fun fetchRemoteHits(
         query: String,
         page: Int = 1,
-        perPage: Int = 25,
+        perPage: Int = 40,
         type: String = "photo"
     ) {
         val response = client.getPublicRepositories(query, page, perPage, type).execute()
