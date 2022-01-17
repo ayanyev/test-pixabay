@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.ezzyapps.test.repositories.R
 import com.ezzyapps.test.repositories.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 @AndroidEntryPoint
 class ImageDetailsFragment : Fragment() {
@@ -20,8 +19,6 @@ class ImageDetailsFragment : Fragment() {
     private val args: ImageDetailsFragmentArgs by navArgs()
 
     private val vm: ImageDetailsViewModel by viewModels()
-
-    private val disposables = CompositeDisposable()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +34,4 @@ class ImageDetailsFragment : Fragment() {
             }.root
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        disposables.dispose()
-    }
 }

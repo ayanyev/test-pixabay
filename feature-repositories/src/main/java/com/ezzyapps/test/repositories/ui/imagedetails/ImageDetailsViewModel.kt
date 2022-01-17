@@ -3,6 +3,7 @@ package com.ezzyapps.test.repositories.ui.imagedetails
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
+import com.ezzyapps.test.pixabay.common.BaseViewModel
 import com.ezzyapps.test.repositories.domain.ImageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -13,12 +14,10 @@ import javax.inject.Inject
 @HiltViewModel
 class ImageDetailsViewModel @Inject constructor(
 
-    private val delegate: ActivityDelegate,
+    override val delegate: ActivityDelegate,
     private val repo: ImageRepository
 
-) : ViewModel() {
-
-    private val disposables = CompositeDisposable()
+) : BaseViewModel() {
 
     val image = ObservableField<FullImageViewModel>()
 
@@ -44,10 +43,6 @@ class ImageDetailsViewModel @Inject constructor(
                     }
                 )
         )
-    }
-
-    override fun onCleared() {
-        disposables.dispose()
     }
 
 }

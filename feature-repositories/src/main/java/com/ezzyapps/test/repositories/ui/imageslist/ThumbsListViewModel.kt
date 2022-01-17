@@ -1,28 +1,24 @@
 package com.ezzyapps.test.repositories.ui.imageslist
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.ViewModel
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
+import com.ezzyapps.test.pixabay.common.BaseViewModel
 import com.ezzyapps.test.repositories.domain.ImageRepository
-import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents
 import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents.ImageSelectedEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import javax.inject.Inject
 
 @HiltViewModel
 class ThumbsListViewModel @Inject constructor(
 
-    delegate: ActivityDelegate,
+    override val delegate: ActivityDelegate,
     repo: ImageRepository
 
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val defaultQuery = "fruits"
-
-    private val disposables = CompositeDisposable()
 
     val images = ObservableField<List<ThumbItemViewModel>>()
 
@@ -53,10 +49,6 @@ class ThumbsListViewModel @Inject constructor(
                     }
                 )
         )
-    }
-
-    override fun onCleared() {
-        disposables.dispose()
     }
 
 }
