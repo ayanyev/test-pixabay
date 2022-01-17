@@ -27,7 +27,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="36dp"
+            android:layout_margin="@dimen/padding_xlarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/middleGuideline"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
                 android:id="@+id/imageFull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/padding_normal"
                 android:scaleType="fitCenter"
                 app:errorRes="@{viewModel.image.error}"
                 app:imageRes="@{viewModel.image.placeholder}"
@@ -60,15 +60,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp">
+                android:paddingHorizontal="@dimen/padding_normal"
+                android:paddingVertical="@dimen/padding_small">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/likesIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="@dimen/padding_small"
                     app:srcCompat="@drawable/likes" />
 
                 <TextView
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@{viewModel.image.likes}"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_size_small"
                     tools:text="234" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -86,15 +86,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp">
+                android:paddingHorizontal="@dimen/padding_normal"
+                android:paddingVertical="@dimen/padding_small">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/downloadsIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="@dimen/padding_small"
                     app:srcCompat="@drawable/downloads" />
 
                 <TextView
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@{viewModel.image.downloads}"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_size_small"
                     tools:text="23456" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -112,15 +112,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp">
+                android:paddingHorizontal="@dimen/padding_normal"
+                android:paddingVertical="@dimen/padding_small">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/commentsIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="@dimen/padding_small"
                     app:srcCompat="@drawable/comments" />
 
                 <TextView
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@{viewModel.image.comments}"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_size_small"
                     tools:text="23" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -140,7 +140,7 @@
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
+            android:paddingVertical="@dimen/padding_normal"
             android:text="@{viewModel.image.name}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +152,7 @@
             android:id="@+id/imageTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="16dp"
+            android:paddingVertical="@dimen/padding_normal"
             android:text="@{viewModel.image.tags}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/middleGuideline"
