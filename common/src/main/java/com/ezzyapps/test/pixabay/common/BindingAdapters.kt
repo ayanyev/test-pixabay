@@ -57,11 +57,16 @@ fun ImageView.setImageFromUrlOrResource(
     url: String?,
     @DrawableRes imageRes: Int,
     @DrawableRes errorRes: Int,
-    size: Size
+    size: Size?
 ) {
+
+    if (url == null) return
+
     Picasso.get()
         .load(if (url.isNullOrBlank()) null else url)
-        .resize(size.width, size.height)
+        .run {
+            if (size != null) resize(size.width, size.height) else centerCrop()
+        }
         .placeholder(imageRes)
         .error(errorRes)
         .into(this)

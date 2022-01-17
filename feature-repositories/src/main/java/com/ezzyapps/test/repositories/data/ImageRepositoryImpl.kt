@@ -32,8 +32,10 @@ class ImageRepositoryImpl @Inject constructor(
             .map { it.first().hits.toPreview() }
     }
 
-    override fun getPhotoDetails(id: Int): Maybe<FullImage> {
-        return db.hitsDao().getHitForId(id).map { it.toFullImage() }
+    override fun getPhotoDetails(id: Long): Maybe<FullImage> {
+        return db.hitsDao().getHitForId(id)
+            .subscribeOn(Schedulers.io())
+            .map { it.toFullImage() }
     }
 
     private fun fetchRemoteHits(

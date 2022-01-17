@@ -10,6 +10,6 @@ interface ImageRepository {
 
     fun getPreviews(query: String) : Observable<List<PreviewImage>>
 
-    fun getPhotoDetails(id: Int) : Maybe<FullImage>
+    fun getPhotoDetails(id: Long) : Maybe<FullImage>
 
 }

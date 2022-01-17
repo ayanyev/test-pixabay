@@ -27,6 +27,6 @@ interface HitsDao {
     fun getHitsForQuery(query: String): Observable<List<QueryHits>>
 
     @Query("SELECT * FROM hits WHERE hitId=:id")
-    fun getHitForId(id: Int): Maybe<HitDbo>
+    fun getHitForId(id: Long): Maybe<HitDbo>
 
 }

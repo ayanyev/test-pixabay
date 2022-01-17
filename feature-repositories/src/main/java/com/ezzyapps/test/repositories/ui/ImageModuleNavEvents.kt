@@ -4,7 +4,7 @@ import com.ezzyapps.test.pixabay.common.NavTrigger
 
 sealed class ImageModuleNavEvents : NavTrigger {
 
-    object ImageSelectedEvent: NavTrigger
-    object ImageSelectionConfirmedEvent: NavTrigger
+    class ImageSelectedEvent(val id: Long): ImageModuleNavEvents()
+    class ImageSelectionConfirmedEvent(val id: Long): ImageModuleNavEvents()
 
 }

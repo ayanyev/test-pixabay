@@ -2,6 +2,7 @@ package com.eazzyapps.test
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
@@ -9,6 +10,8 @@ import androidx.navigation.fragment.NavHostFragment
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.pixabay.common.setVisible
 import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents
+import com.ezzyapps.test.repositories.ui.imageslist.ConfirmationDialogDirections
+import com.ezzyapps.test.repositories.ui.imageslist.ThumbsListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -34,16 +37,21 @@ class MainActivity : AppCompatActivity() {
 
         disposables.addAll(
 
-            delegate.navEvents.subscribeBy {
+            delegate.navEvents.subscribeBy { event ->
                 with(navController) {
-                    when (it) {
-                        ImageModuleNavEvents.ImageSelectedEvent -> navigate(R.id.imageSelectionDialog)
-                        ImageModuleNavEvents.ImageSelectionConfirmedEvent -> navigate(R.id.imageDetailsFragment)
+                    when (event) {
+                        is ImageModuleNavEvents.ImageSelectedEvent ->
+                            navigate(ThumbsListFragmentDirections.toDetailsConfirmationDialog(event.id))
+                        is ImageModuleNavEvents.ImageSelectionConfirmedEvent ->
+                            navigate(ConfirmationDialogDirections.toImageDetailsFragment(event.id))
                     }
                 }
             },
             delegate.loadingEvents.subscribeBy { isLoading ->
                 progressBar.setVisible(isLoading)
+            },
+            delegate.messagingEvents.subscribeBy { message ->
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
             }
 
         )

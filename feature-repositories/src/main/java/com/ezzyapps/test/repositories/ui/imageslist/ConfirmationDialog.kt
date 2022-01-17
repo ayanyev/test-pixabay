@@ -4,14 +4,18 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.navArgs
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.repositories.R
 import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents
+import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents.*
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class YesNoDialogFragment : DialogFragment() {
+class ConfirmationDialog : DialogFragment() {
+
+    private val args: ConfirmationDialogArgs by navArgs()
 
     @Inject
     lateinit var delegate: ActivityDelegate
@@ -20,12 +24,9 @@ class YesNoDialogFragment : DialogFragment() {
         AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.details_dialog_title))
             .setPositiveButton(getString(R.string.positive_button)) { _, _ ->
-                delegate.navigate(ImageModuleNavEvents.ImageSelectionConfirmedEvent)
+                delegate.navigate(ImageSelectionConfirmedEvent(args.imageId))
             }
-            .setNegativeButton(getString(R.string.negative_button)) { _, _ -> dismiss()}
+            .setNegativeButton(getString(R.string.negative_button)) { _, _ -> dismiss() }
             .create()
 
-    companion object {
-        const val TAG = "PurchaseConfirmationDialog"
-    }
 }

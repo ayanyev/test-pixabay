@@ -22,6 +22,13 @@ class ActivityDelegate {
         loadingStateSubject.onNext(loading)
     }
 
+    private val messageSubject = PublishSubject.create<String>()
+
+    val messagingEvents: Observable<String> = messageSubject
+
+    fun showMessage(msg: String) {
+        messageSubject.onNext(msg)
+    }
 
 }
 

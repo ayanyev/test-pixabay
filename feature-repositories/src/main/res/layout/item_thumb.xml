@@ -25,11 +25,11 @@
             app:errorRes="@{viewModel.error}"
             app:imageRes="@{viewModel.placeholder}"
             app:imageUrl="@{viewModel.url}"
+            app:size="@{viewModel.size}"
             app:layout_constraintBottom_toTopOf="@id/thumbTags"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:size="@{viewModel.size}"
-            tools:src="@drawable/test_item_image" />
+            tools:src="@drawable/test_image_preview" />
 
         <FrameLayout
             android:layout_width="0dp"

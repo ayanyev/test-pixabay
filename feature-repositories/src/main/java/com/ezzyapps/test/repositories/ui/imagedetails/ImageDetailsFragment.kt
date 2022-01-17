@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.ezzyapps.test.repositories.R
 import com.ezzyapps.test.repositories.databinding.FragmentDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +16,8 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 @AndroidEntryPoint
 class ImageDetailsFragment : Fragment() {
+
+    private val args: ImageDetailsFragmentArgs by navArgs()
 
     private val vm: ImageDetailsViewModel by viewModels()
 
@@ -28,8 +31,10 @@ class ImageDetailsFragment : Fragment() {
             supportActionBar?.setDisplayHomeAsUpEnabled(false)
         }
         return DataBindingUtil.inflate<FragmentDetailsBinding>(inflater, R.layout.fragment_details, container, false)
-            .apply { this.viewModel = vm }
-            .root
+            .apply {
+                viewModel = vm
+                vm.setId(args.imageId)
+            }.root
     }
 
     override fun onDestroy() {

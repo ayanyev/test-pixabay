@@ -8,13 +8,26 @@
         android:id="@+id/thumbsListFragment"
         android:name="com.ezzyapps.test.repositories.ui.imageslist.ThumbsListFragment"
         android:label="ThumbsListFragment" >
+        <action
+            android:id="@+id/toDetailsConfirmationDialog"
+            app:destination="@id/imageSelectionDialog" />
     </fragment>
     <dialog
         android:id="@+id/imageSelectionDialog"
-        android:name="com.ezzyapps.test.repositories.ui.imageslist.YesNoDialogFragment">
+        android:name="com.ezzyapps.test.repositories.ui.imageslist.ConfirmationDialog">
+        <argument
+            android:name="imageId"
+            app:argType="long" />
+        <action
+            android:id="@+id/toImageDetailsFragment"
+            app:destination="@id/imageDetailsFragment" />
     </dialog>
     <fragment
         android:id="@+id/imageDetailsFragment"
         android:name="com.ezzyapps.test.repositories.ui.imagedetails.ImageDetailsFragment"
-        android:label="ImageDetailsFragment" />
+        android:label="ImageDetailsFragment" >
+        <argument
+            android:name="imageId"
+            app:argType="long" />
+    </fragment>
 </navigation>

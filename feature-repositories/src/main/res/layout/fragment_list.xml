@@ -32,19 +32,6 @@
             app:items="@{viewModel.images}"
             app:layout="@{@layout/item_thumb}" />
 
-        <androidx.core.widget.ContentLoadingProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:visible="@{viewModel.isLoading}" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@{viewModel.errorMsg}"
-            app:visible="@{viewModel.errorMsgVisibility}" />
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

@@ -4,7 +4,6 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.repositories.domain.ImageRepository
-import com.ezzyapps.test.repositories.domain.models.FullImage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -13,29 +12,35 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ImageDetailsViewModel @Inject constructor(
-    delegate: ActivityDelegate,
-    repo: ImageRepository
+
+    private val delegate: ActivityDelegate,
+    private val repo: ImageRepository
+
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
 
-    val image = ObservableField<FullImage>()
+    val image = ObservableField<FullImageViewModel>()
 
-    init {
+    fun setId(id: Long) {
         disposables.add(
-            repo.getPhotoDetails(1111)
-                .doOnSubscribe { delegate.showLoading(true) }
+            repo.getPhotoDetails(id)
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe {
+                    delegate.showLoading(true)
+                }
                 .doOnTerminate {
                     delegate.showLoading(false)
                 }
                 .subscribeBy(
-                    onSuccess = { i -> image.set(i) },
+                    onSuccess = { i ->
+                        image.set(FullImageViewModel(i))
+                    },
                     onComplete = {
-                        // TODO show message
+                        delegate.showMessage("Error: image no found")
                     },
                     onError = { e ->
-                        // TODO show message
+                        delegate.showMessage("Error: ${e.message ?: "no message"}")
                     }
                 )
         )
