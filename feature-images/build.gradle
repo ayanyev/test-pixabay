@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdkVersion 32
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField("String", "TOKEN", "\"<token goes here>\"")
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+}
+
+dependencies {
+
+    implementation platform(project(':platform'))
+    kapt platform(project(':platform'))
+
+    implementation(project(':common'))
+
+    implementation "com.google.android.material:material"
+
+    implementation "androidx.fragment:fragment-ktx"
+    implementation "androidx.navigation:navigation-fragment-ktx"
+    implementation "androidx.navigation:navigation-ui-ktx"
+
+    implementation "com.google.dagger:hilt-android"
+    kapt "com.google.dagger:hilt-compiler"
+
+    implementation "com.squareup.retrofit2:retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava3"
+    implementation "com.squareup.retrofit2:converter-moshi"
+
+    implementation "com.squareup.okhttp3:okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor"
+    implementation "com.squareup.moshi:moshi-kotlin"
+
+    implementation "androidx.room:room-runtime"
+    implementation "androidx.room:room-rxjava3"
+    kapt "androidx.room:room-compiler"
+
+    testImplementation "junit:junit"
+    testImplementation "androidx.test:core"
+    testImplementation "io.mockk:mockk"
+
+}

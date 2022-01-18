@@ -1,23 +1,18 @@
 package com.eazzyapps.test
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.ContentLoadingProgressBar
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.ezzyapps.test.pixabay.common.ActivityDelegate
 import com.ezzyapps.test.pixabay.common.setVisible
-import com.ezzyapps.test.repositories.ui.ImageModuleNavEvents
-import com.ezzyapps.test.repositories.ui.imageslist.ConfirmationDialogDirections
-import com.ezzyapps.test.repositories.ui.imageslist.PreviewListFragmentDirections
+import com.ezzyapps.test.images.ui.ImageModuleNavEvents
+import com.ezzyapps.test.images.ui.imageslist.ConfirmationDialogDirections
+import com.ezzyapps.test.images.ui.imageslist.PreviewListFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.subscribeBy

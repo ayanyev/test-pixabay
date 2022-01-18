@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/images_graph"
+    app:startDestination="@id/thumbsListFragment">
+
+    <fragment
+        android:id="@+id/thumbsListFragment"
+        android:name="com.ezzyapps.test.images.ui.imageslist.PreviewListFragment"
+        android:label="Pixabay search &amp; pick" >
+        <action
+            android:id="@+id/toDetailsConfirmationDialog"
+            app:destination="@id/imageSelectionDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/imageSelectionDialog"
+        android:name="com.ezzyapps.test.images.ui.imageslist.ConfirmationDialog">
+        <argument
+            android:name="imageId"
+            app:argType="long" />
+        <action
+            android:id="@+id/toImageDetailsFragment"
+            app:destination="@id/imageDetailsFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/imageDetailsFragment"
+        android:name="com.ezzyapps.test.images.ui.imagedetails.ImageDetailsFragment"
+        android:label="Image details" >
+        <argument
+            android:name="imageId"
+            app:argType="long" />
+    </fragment>
+</navigation>

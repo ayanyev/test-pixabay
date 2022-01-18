@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.eazzyapps.test"
-        minSdk 26
+        minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -47,7 +47,7 @@ dependencies {
     kapt platform(project(':platform'))
 
     implementation project(path: ':common')
-    implementation project(path: ':feature-repositories')
+    implementation project(path: ':feature-images')
 
     implementation "com.google.android.material:material"
 

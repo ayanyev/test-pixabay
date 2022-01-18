@@ -1,5 +1,5 @@
 rootProject.name = "Pixabay test"
 include ':app'
-include ':feature-repositories'
+include ':feature-images'
 include ':platform'
 include ':common'
