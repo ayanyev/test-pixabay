@@ -47,8 +47,6 @@ dependencies {
     api "io.reactivex.rxjava3:rxjava"
     api "io.reactivex.rxjava3:rxkotlin"
 
-    api 'com.google.android.flexbox:flexbox'
-
     implementation "com.squareup.picasso:picasso"
 
     implementation "junit:junit"
