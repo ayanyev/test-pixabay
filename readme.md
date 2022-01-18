@@ -27,20 +27,20 @@ buildConfigField("String", "TOKEN", "\"<token goes here>\"")
 * MVVM + data-binding
 * dependency injection
 * clean architecture (domain/data/ui separation within feature module)
-    ** each layer has its own model which are converted subsequently: dto -> dbo -> domain -> view model
-        - dto reflects all data that is provided by API. Uses its own set of Annotations (Moshi)
-        - dbo reflects the way it is stored in db. Uses its own set of Annotations (Room).  
+   - each layer has its own model which are converted subsequently: dto -> dbo -> domain -> view model
+      - dto reflects all data that is provided by API. Uses its own set of Annotations (Moshi)
+      - dbo reflects the way it is stored in db. Uses its own set of Annotations (Room).  
             Might also have different data types and simplified data structure. Is a subset of dto data
-        - domain model reflects the subset of app's data necessary for particular business logic step
-        - view model reflects how domain data is presented
-    ** it might to seem like over engineering, but only on the short run. Just imagine all above requirements merged into one class...
+      - domain model reflects the subset of app's data necessary for particular business logic step
+      - view model reflects how domain data is presented
+   - it might to seem like over engineering, but only on the short run. Just imagine all above requirements merged into one class...
 * database as single source of data:
-    ** UI reactively observes Db state
-    ** if Db lacks data the remote data is requested (see repository implementation)
+   - UI reactively observes Db state
+   - if Db lacks data the remote data is requested (see repository implementation)
 * ActivityDelegate used to propagate messages, navigation and loading events 
   triggered in view models to where they can be consumed - Activity. ActivityDelegate is safe
   as it does not keep reference to any context and serves only as a relay
 ###### Not done but "must have" in real app
 * proper exception handling
-    ** e.g. mapping API exceptions to domain exceptions with meaningful for the user messages
+   - e.g. mapping API exceptions to domain exceptions with meaningful for the user messages
 * pagination for images list
